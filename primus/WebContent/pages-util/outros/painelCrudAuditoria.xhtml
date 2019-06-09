@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:panelGrid columns="2" layout="grid">
+		<p:outputLabel value="#{msg['dataInclusao']}" />
+		<p:outputLabel value="#{bean.entity.auditoria.dataInclusao}" />
+		<p:outputLabel value="#{msg['usuarioInclusao']}" />
+		<p:outputLabel value="#{bean.entity.auditoria.usuarioInclusao.email}" />
+		<p:outputLabel value="#{msg['dataUltimaAlteracao']}" />
+		<p:outputLabel value="#{bean.entity.auditoria.dataAlteracao}" />
+		<p:outputLabel value="#{msg['usuarioUltimaAlteracao']}" />
+		<p:outputLabel value="#{bean.entity.auditoria.usuarioAlteracao.email}" />
+	</p:panelGrid>
+
+</ui:composition>

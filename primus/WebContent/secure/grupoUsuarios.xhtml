@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="../pages-util/templateSecure.xhtml">
+
+	<ui:param name="bean" value="#{grupoUsuariosBean}" />
+
+	<ui:define name="content">
+
+		<p:outputLabel value="#{bean.tituloPagina}" />
+
+		<br />
+		<p:spacer />
+
+		<!-- CONSULTAR -->
+
+		<h:panelGroup rendered="#{bean.acaoCrudConsultar}">
+			<p:panelGrid columns="1" layout="grid">
+				<p:outputLabel value="#{msg['id']}" />
+				<p:inputText value="#{bean.entityConsulta.id}" />
+				<p:outputLabel value="#{msg['nome']}" />
+				<p:inputText value="#{bean.entityConsulta.nome}" />
+				<p:outputLabel value="#{msg['descricao']}" />
+				<p:inputText value="#{bean.entityConsulta.descricao}" />
+			</p:panelGrid>
+			<br />
+			<ui:include src="../pages-util/botoesCrudConsultar.xhtml" />
+			<br />
+			<p:dataTable var="rs" value="#{bean.resultSet}"
+				emptyMessage="#{msg['semRegistros']}">
+				<p:column headerText="#{msg['id']}">
+					<h:outputText value="#{rs.id}" />
+				</p:column>
+				<p:column headerText="#{msg['nome']}">
+					<h:outputText value="#{rs.nome}" />
+				</p:column>
+				<p:column headerText="#{msg['descricao']}">
+					<h:outputText value="#{rs.descricao}" />
+				</p:column>
+				<ui:include src="../pages-util/colunasVisualizarAlterar.xhtml" />
+			</p:dataTable>
+		</h:panelGroup>
+
+		<!-- VISUALIZAR -->
+
+		<h:panelGroup rendered="#{bean.acaoCrudVisualizar}">
+			<p:panelGrid columns="1" layout="grid">
+				<p:outputLabel value="#{msg['id']}" />
+				<p:outputLabel value="#{bean.entity.id}" />
+				<p:outputLabel value="#{msg['nome']}" />
+				<p:outputLabel value="#{bean.entity.nome}" />
+				<p:outputLabel value="#{msg['descricao']}" />
+				<p:outputLabel value="#{bean.entity.descricao}" />
+			</p:panelGrid>
+			<br />
+			<p:outputLabel value="#{msg['acessos']}" />
+			<br /><br />
+			<p:selectManyCheckbox value="#{bean.acessosSelecionados}" 
+				layout="responsive" columns="3" disabled="true">
+				<f:selectItems value="#{menuBean.acessos}" var="acesso"
+					itemLabel="#{acesso.descricao}" itemValue="#{acesso.codigo}" />
+			</p:selectManyCheckbox>
+			<br />
+			<ui:include src="../pages-util/painelCrudAuditoria.xhtml" />
+			<br />
+			<ui:include src="../pages-util/botoesCrudVisualizar.xhtml" />
+		</h:panelGroup>
+
+		<!-- CADASTRAR -->
+
+		<h:panelGroup rendered="#{bean.acaoCrudCadastrar}">
+			<p:panelGrid columns="1" layout="grid">
+				<p:outputLabel value="#{msg['nome']}" />
+				<p:inputText value="#{bean.entity.nome}" />
+				<p:outputLabel value="#{msg['descricao']}" />
+				<p:inputText value="#{bean.entity.descricao}" />
+			</p:panelGrid>
+			<br />
+			<p:outputLabel value="#{msg['acessos']}" />
+			<br /><br />
+			<p:selectManyCheckbox value="#{bean.acessosSelecionados}"
+				layout="responsive" columns="3">
+				<f:selectItems value="#{menuBean.acessos}" var="acesso"
+					itemLabel="#{acesso.descricao}" itemValue="#{acesso.codigo}" />
+			</p:selectManyCheckbox>
+			<br />
+			<ui:include src="../pages-util/botoesCrudCadastrar.xhtml" />
+		</h:panelGroup>
+
+		<!-- ALTERAR -->
+
+		<h:panelGroup rendered="#{bean.acaoCrudAlterar}">
+			<p:panelGrid columns="1" layout="grid">
+				<p:outputLabel value="#{msg['id']}" />
+				<p:outputLabel value="#{bean.entity.id}" />
+				<p:outputLabel value="#{msg['nome']}" />
+				<p:inputText value="#{bean.entity.nome}" />
+				<p:outputLabel value="#{msg['descricao']}" />
+				<p:inputText value="#{bean.entity.descricao}" />
+			</p:panelGrid>
+			<br />
+			<p:outputLabel value="#{msg['acessos']}" />
+			<br /><br />
+			<p:selectManyCheckbox value="#{bean.acessosSelecionados}"
+				layout="responsive" columns="3">
+				<f:selectItems value="#{menuBean.acessos}" var="acesso"
+					itemLabel="#{acesso.descricao}" itemValue="#{acesso.codigo}" />
+			</p:selectManyCheckbox>
+			<br />
+			<ui:include src="../pages-util/painelCrudAuditoria.xhtml" />
+			<br />
+			<ui:include src="../pages-util/botoesCrudAlterar.xhtml" />
+		</h:panelGroup>
+
+	</ui:define>
+
+</ui:composition>

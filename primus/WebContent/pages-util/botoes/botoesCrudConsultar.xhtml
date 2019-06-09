@@ -1,0 +1,12 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:panelGrid>
+		<p:commandButton value="#{msg['consultar']}"
+			actionListener="#{bean.consultar}" update="form" />
+		<p:commandButton value="#{msg['cadastrar']}"
+			actionListener="#{bean.cadastrar}" update="form" />
+	</p:panelGrid>
+
+</ui:composition>

@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<p:panelGrid columns="2" layout="grid">
+		<p:column>
+			<p:outputLabel value="#{msg['cabecalho']}" />
+		</p:column>
+		<p:column>
+			<p:outputLabel value="#{msg['usuarioLogado']}" />
+			<p:spacer width="10" height="0" />
+			<p:outputLabel value="#{principalBean.emailUsuario}" />
+		</p:column>
+	</p:panelGrid>
+
+	<p:spacer width="5" height="5" />
+
+	<p:menubar model="#{menuBean.model}">
+		<f:facet name="options">
+			<p:commandButton value="#{msg['sair']}" icon="ui-icon-extlink"
+				update="form" action="#{indexBean.logout}" />
+		</f:facet>
+	</p:menubar>
+
+	<p:spacer width="5" height="5" />
+	
+</ui:composition>

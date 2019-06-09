@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/pages-util/estrutura/templatePublic.xhtml">
+
+	<ui:param name="bean" value="#{indexBean}" />
+
+	<ui:define name="content">
+
+		<f:event type="preRenderView" listener="#{bean.init}" />
+
+		<p:outputLabel value="#{msg['tituloIndexBean']}" />
+
+		<br />
+		<p:spacer />
+
+		<p:panelGrid columns="1" layout="grid">
+			<p:inputText value="#{bean.emailUsuario}" label="#{msg['e-mail']}"
+				required="true" pt:placeholder="#{msg['e-mail']}" />
+			<p:password value="#{bean.senhaUsuario}" label="#{msg['senha']}"
+				required="true" pt:placeholder="#{msg['senha']}" />
+			<p:commandButton value="#{msg['entrar']}" update="form"
+				action="#{bean.login}" />
+		</p:panelGrid>
+
+		<br />
+
+		<p:panelGrid columns="1" layout="grid">
+			<p:outputLabel value="#{msg['idioma']}" />
+			<p:selectOneMenu
+				value="#{localeManagerBean.localeSelectOneMenuSelected}"
+				valueChangeListener="#{localeManagerBean.alterarIdioma}">
+				<f:selectItems value="#{localeManagerBean.idiomas}" />
+				<p:ajax event="change" update="form" />
+			</p:selectOneMenu>
+		</p:panelGrid>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			Curabitur consequat, metus eget laoreet tincidunt, tellus dui varius
+			erat, vitae ultrices risus ligula a ex. Curabitur euismod quam
+			imperdiet enim interdum accumsan. Pellentesque ut neque ultricies,
+			porta quam ac, bibendum ligula. Phasellus sed ex neque. Ut malesuada
+			lectus erat. Suspendisse pharetra porta sodales. Nulla sed porttitor
+			nisl. Praesent nec rutrum ex. Donec eu velit at sapien mattis
+			pellentesque. Quisque dapibus aliquet ante commodo condimentum.
+			Pellentesque semper ligula ac diam pulvinar, non pulvinar risus
+			consectetur. Nulla nec iaculis lacus. Morbi felis ligula, posuere id
+			justo sed, consequat vulputate est. Aliquam ullamcorper congue mi
+			eget viverra.</p>
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<p>TESTE</p>
+		<br />
+		<br />
+		<p>TESTE</p>
+		<br />
+
+		<p:commandButton value="#{msg['entrar']}" update="form"
+			action="#{bean.login}" />
+
+		<p>TESTE</p>
+		<br />aaaa
+
+	</ui:define>
+
+</ui:composition>
